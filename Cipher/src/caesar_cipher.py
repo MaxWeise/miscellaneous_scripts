@@ -2,7 +2,7 @@
 """ Casar Cipher to encode UTF-8 Code
 
 Created 08.06.2021
-Last Revision 09.06.2021
+Last Revision 19.06.2021
 @author Max Weise
 """
 
@@ -16,25 +16,33 @@ class Caesar_Cipher(object):
 
     __alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'   # For easier lookup
 
-    def __decode_cipher(cipher_text: str, known_offset: int) -> str:
-        pass
-
     @staticmethod
     def encript(plaintext: str, offset: int) -> str:
         """ Shift every char in string by a given offset."""
         ret = ''
         for char in plaintext:
-            i = (Caesar_Cipher.__alphabet.index(char) + offset) % 26
-            ret += Caesar_Cipher.__alphabet[i]
+            i = (Caesar_Cipher.__alphabet.index(char) + offset) % 26        # Get the offset index
+            ret += Caesar_Cipher.__alphabet[i]                              # Compute new index
 
         return ret
 
     @staticmethod
-    def decript(cipher_text: str, known_offset: int = None) -> str:
+    def decript_with_offset(cipher_text: str, known_offset: int = None) -> str:
         """ Shift every char in string by a given offset (opposite to encript)."""
         ret = ''
         for char in cipher_text:
-            i = (Caesar_Cipher.__alphabet.index(char) - known_offset) % 26
-            ret += Caesar_Cipher.__alphabet[i]
+            i = (Caesar_Cipher.__alphabet.index(char) - known_offset) % 26  # Get the offset index
+            ret += Caesar_Cipher.__alphabet[i]                              # Compute new index
 
         return ret
+
+    @staticmethod
+    def decript_brute_force(cipher_text: str, console_output: bool = False) -> list:
+        """ Print the solution for every possible offset. Returns a list of all possibilities."""
+        ret_list = [Caesar_Cipher.decript_with_offset(cipher_text, offset) for offset in range(26)]
+        if console_output:
+            for key, value in enumerate(ret_list):
+                print(f'{key} -- {value}')
+
+        return ret_list
+

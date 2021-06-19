@@ -2,7 +2,7 @@
 """ Test for the caesar cipher
 
 Created 08.06.2021
-Last Revision 09.06.2021
+Last Revision 19.06.2021
 @author Max Weise
 """
 
@@ -31,13 +31,13 @@ class Test_Caesar_Cipher(TestCase):
 
         self.assertEqual(encoded_text, self.__TEST_ALPHABET_ENCR)
 
-    def test_decript_with_offsett(self):
-        decoded_text = Caesar_Cipher.decript(self.__TEST_WORD_ENCR, 3)
+    def test_decript_with_offset(self):
+        decoded_text = Caesar_Cipher.decript_with_offset(self.__TEST_WORD_ENCR, 3)
 
         self.assertEqual(self.__TEST_WORD, decoded_text)
 
     def test_decript_alphabet(self):
-        decoded_text = Caesar_Cipher.decript(self.__TEST_ALPHABET_ENCR, 3)
+        decoded_text = Caesar_Cipher.decript_with_offset(self.__TEST_ALPHABET_ENCR, 3)
 
         self.assertEqual(self.__TEST_ALPHABET, decoded_text)
 
