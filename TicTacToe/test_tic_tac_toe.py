@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """ Test Suite for the TicTacToe Game
 
 created 24.05.2021
@@ -5,8 +6,11 @@ Last update 26.05.2021
 @author Max Weise
 """
 
-from unittest import TestCase, skip
+import unittest
+
+from unittest import TestCase
 from tic_tac_toe import Grid
+
 
 class Test_Grid(TestCase):
 
@@ -19,7 +23,7 @@ class Test_Grid(TestCase):
                                     [' ', 'x', ' '],
                                 ]
                             )
-        
+
         self.test_grid_two = Grid(
                                 [
                                     [' ', ' ', ' '],
@@ -60,7 +64,7 @@ class Test_Grid(TestCase):
                                     [' ', 'o', 'x'],
                                 ]
                             )
-        
+
         self.assertFalse(self.test_grid.detect_win('o'))
         self.assertFalse(self.test_grid.detect_win('x'))
 
@@ -87,7 +91,7 @@ class Test_Grid(TestCase):
                                     [' ', ' ', ' '],
                                 ]
                             )
-        
+
         self.test_grid_two = Grid(
                                 [
                                     ['x', 'x', 'x'],
@@ -99,5 +103,7 @@ class Test_Grid(TestCase):
         self.assertTrue(self.test_grid_one.grid_has_empty_cells())
         self.assertFalse(self.test_grid_two.grid_has_empty_cells())
 
+
 if __name__ == '__main__':
     unittest.main()
+
